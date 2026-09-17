@@ -1997,11 +1997,47 @@
       updateNavStatusUI();
     });
   </script>
-  <!-- Google Form ചേർക്കാനുള്ള ഭാഗം -->
-<div style="width: 100%; max-width: 600px; margin: 30px auto; padding: 10px; background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); text-align: center;">
-  <h3 style="margin-bottom: 15px; color: #333;">വിദ്യാർത്ഥി രജിസ്ട്രേഷൻ</h3>
-  <iframe src="https://forms.gle/LM5HSMSC6mS3Qh4V8?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">ഫോം ലോഡ് ചെയ്യുന്നു...</iframe>
-</div>
+    <!-- ================= രജിസ്ട്രേഷൻ പോപ്പ്-അപ്പ് (ലളിതമായത്) ================= -->
+  <div id="simpleRegOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 999999; display: flex; justify-content: center; align-items: center; padding: 15px; box-sizing: border-box; backdrop-filter: blur(4px); font-family: sans-serif;">
+    <div style="background: #ffffff; width: 100%; max-width: 480px; max-height: 90vh; border-radius: 16px; padding: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; box-sizing: border-box; overflow-y: auto;">
+      
+      <!-- ആദ്യത്തെ കാർഡ് വ്യൂ -->
+      <div id="regCardView">
+        <div style="font-size: 32px; margin-bottom: 10px;">📋</div>
+        <h2 style="font-size: 19px; color: #1e293b; margin: 0 0 8px;">വിദ്യാർത്ഥി രജിസ്ട്രേഷൻ</h2>
+        <p style="font-size: 14px; color: #64748b; margin: 0 0 20px;">ക്ലാസിൽ തുടരുന്നതിനായി താഴെ നൽകിയിരിക്കുന്ന ഫോം പൂരിപ്പിക്കുക.</p>
 
+        <button onclick="showGoogleForm()" style="width: 100%; background: #2563eb; color: #ffffff; border: none; padding: 12px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer;">
+          രജിസ്ട്രേഷൻ ഫോം തുറക്കുക ➔
+        </button>
+      </div>
+
+      <!-- ഫോം തുറന്നുവരുന്ന ഭാഗം -->
+      <div id="regFormFrameView" style="display: none; text-align: left;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <span style="font-size: 13px; font-weight: bold; color: #334155;">ഫോം പൂരിപ്പിക്കുക:</span>
+          <button onclick="hideGoogleFormModal()" style="background: #ef4444; color: #ffffff; border: none; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer;">
+            പൂർത്തിയായി / ക്ലോസ് ചെയ്യുക ✕
+          </button>
+        </div>
+        
+        <!-- നിങ്ങളുടെ Google Form ലിങ്ക് ഇവിടെ കൊടുത്തിരിക്കുന്നു -->
+        <iframe src="https://forms.gle/LM5HSMSC6mS3Qh4V8?embedded=true" width="100%" height="480" frameborder="0" marginheight="0" marginwidth="0" style="border-radius: 8px; border: 1px solid #cbd5e1;">ഫോം ലോഡ് ചെയ്യുന്നു...</iframe>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function showGoogleForm() {
+      document.getElementById("regCardView").style.display = "none";
+      document.getElementById("regFormFrameView").style.display = "block";
+    }
+
+    function hideGoogleFormModal() {
+      document.getElementById("simpleRegOverlay").style.display = "none";
+    }
+  </script>
+ 
 </body>
 </html>
